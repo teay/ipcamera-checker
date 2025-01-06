@@ -60,3 +60,40 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Contributions
 
 Feel free to open an issue or submit a pull request if you'd like to improve this project. Any contributions are welcome!
+
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+### Apache License 2.0
+
+The Apache License 2.0 is a permissive license that allows you to use, modify, and distribute the software both in commercial and non-commercial applications. It also provides an explicit grant of patent rights from contributors to users.
+
+Key points of the Apache License 2.0:
+
+- You may use, modify, and distribute the code under the terms of this license.
+- If you distribute modified code, you must include a copy of the license and indicate the changes you made.
+- You may not use the names, trademarks, or other identifiers of the project without permission.
+- The license includes an explicit grant of patent rights from contributors to users.
+
+For more details, please refer to the [LICENSE](LICENSE) file in this repository.
+
+---
+
+## ใบอนุญาต
+
+โปรเจกต์นี้ได้รับการอนุญาตภายใต้ **Apache License 2.0** - ดูรายละเอียดในไฟล์ [LICENSE](LICENSE)
+
+### Apache License 2.0
+
+**Apache License 2.0** เป็นใบอนุญาตประเภท permissive ที่อนุญาตให้คุณใช้ ปรับแต่ง และแจกจ่ายซอฟต์แวร์นี้ได้ทั้งในแอปพลิเคชันเชิงพาณิชย์และไม่เชิงพาณิชย์ นอกจากนี้ยังให้สิทธิ์ในการใช้สิทธิบัตรจากผู้สนับสนุนแก่ผู้ใช้
+
+จุดสำคัญของ **Apache License 2.0**:
+
+- คุณสามารถใช้ ปรับแต่ง และแจกจ่ายโค้ดภายใต้เงื่อนไขของใบอนุญาตนี้
+- หากคุณแจกจ่ายโค้ดที่ปรับแต่งแล้ว คุณต้องรวมสำเนาของใบอนุญาตและระบุการเปลี่ยนแปลงที่คุณได้ทำ
+- คุณไม่สามารถใช้ชื่อ เครื่องหมายการค้า หรือสัญลักษณ์อื่นๆ ของโปรเจกต์โดยไม่ได้รับอนุญาต
+- ใบอนุญาตนี้รวมถึงการให้สิทธิ์ในการใช้สิทธิบัตรจากผู้สนับสนุนแก่ผู้ใช้
+
+หากต้องการข้อมูลเพิ่มเติม กรุณาดูไฟล์ [LICENSE](LICENSE) ในที่เก็บนี้
