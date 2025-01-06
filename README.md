@@ -11,7 +11,7 @@ This is a simple web tool to check the domain information and its associated IP 
 
 ## How to Use
 
-1. Go to the website: [IPCAMERA CHECKER](https://teay.github.io/ipcamera-checkerWith-html-css-js/) (Replace with your actual URL).
+1. Go to the website: [IPCAMERA CHECKER](https://teay.github.io/ipcamera-checker/) (Replace with your actual URL).
 2. Enter the domain name you want to check in the input field.
 3. Click the "ตรวจสอบโดเมน" (Check Domain) button.
 4. View the results in the table below, including:
