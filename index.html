@@ -41,13 +41,45 @@
         .error {
             color: red;
         }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* เพิ่มส่วนนี้เพื่อจัดกึ่งกลาง */
+        .input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>IPCAMERA CHECKER</h1>
+
+    <!-- กรอบของช่องกรอกและปุ่ม -->
+    <div class="input-container">
+        <input type="text" id="user-domain" placeholder="กรอกโดเมนที่นี่" />
+        <button onclick="checkDomain()">ตรวจสอบโดเมน</button>
+    </div>
 
     <table id="ip-table">
         <tr>
@@ -80,24 +112,46 @@
             }
         }
 
-        async function loadIPData() {
-            const domains = ['x.com','google.com', 'google.co.th', 'blognone.com'];
-            const table = document.getElementById('ip-table');
-            const publicIP = await fetchPublicIP();
-
-            domains.forEach(async (domain) => {
-                const domainIP = await fetchDomainIP(domain);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${domain}</td>
-                    <td>${publicIP}</td>
-                    <td>${domainIP}</td>
-                `;
-                table.appendChild(row);
-            });
+        function validateDomain(domain) {
+            const domainPattern = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return domainPattern.test(domain);
         }
 
-        loadIPData();
+        async function checkDomain() {
+            const userDomain = document.getElementById('user-domain').value.trim();
+            if (!userDomain) {
+                alert('กรุณากรอกโดเมน');
+                return;
+            }
+
+            // Validate domain format (basic validation)
+            if (!validateDomain(userDomain)) {
+                alert('กรุณากรอกโดเมนที่ถูกต้อง');
+                return;
+            }
+
+            const table = document.getElementById('ip-table');
+            const publicIP = await fetchPublicIP();
+            const domainIP = await fetchDomainIP(userDomain);
+
+            // Clear previous rows
+            table.innerHTML = `
+                <tr>
+                    <th>Domain Name</th>
+                    <th>Public IP (UserLocationIP)</th>
+                    <th>IP Address ของ Domain Name</th>
+                </tr>
+            `;
+            
+            // Add the domain checked by the user
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${userDomain}</td>
+                <td>${publicIP}</td>
+                <td>${domainIP}</td>
+            `;
+            table.appendChild(row);
+        }
     </script>
 </body>
 </html>
