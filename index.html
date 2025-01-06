@@ -113,7 +113,7 @@
                 const responses = await Promise.all(sources.map(source => fetch(source)
                     .then(response => response.json())
                     .catch(error => null)
-                ));
+                )) ;
 
                 // หาผลลัพธ์ที่ไม่เป็น null และมีข้อมูล
                 for (let response of responses) {
@@ -121,7 +121,7 @@
                         return response.Answer[0].data;
                     }
                 }
-                
+
                 // ถ้าไม่พบ IP ในแหล่งข้อมูลทั้ง 3 ให้แสดงข้อความ "ไม่พบ"
                 return '<span class="error">ไม่พบ</span>';
             } catch (error) {
@@ -160,7 +160,7 @@
                     <th>IP Address ของ Domain Name</th>
                 </tr>
             `;
-            
+
             // Add the domain checked by the user
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -170,34 +170,6 @@
             `;
             table.appendChild(row);
         }
-
-        // ฟังก์ชันโหลดข้อมูล IP ของโดเมน
-        async function loadIPData() {
-            // const domains = ['google.com', 'google.co.th', 'canyouseeme.org'];
-            const domains = [
-                'canyouseeme.org',
-                'dns.google',
-                'google.com',
-                'google.co.th',
-                'opendns.com'
-            ];
-            const table = document.getElementById('ip-table');
-            const publicIP = await fetchPublicIP();
-
-            domains.forEach(async (domain) => {
-                const domainIP = await fetchDomainIP(domain);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${domain}</td>
-                    <td>${publicIP}</td>
-                    <td>${domainIP}</td>
-                `;
-                table.appendChild(row);
-            });
-        }
-
-        // เรียกฟังก์ชันโหลดข้อมูลโดเมนเริ่มต้น
-        loadIPData();
     </script>
 </body>
 </html>
