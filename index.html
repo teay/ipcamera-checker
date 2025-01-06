@@ -136,40 +136,32 @@
         }
 
         async function checkDomain() {
-            const userDomain = document.getElementById('user-domain').value.trim();
-            if (!userDomain) {
-                alert('กรุณากรอกโดเมน');
-                return;
-            }
-
-            // Validate domain format (basic validation)
-            if (!validateDomain(userDomain)) {
-                alert('กรุณากรอกโดเมนที่ถูกต้อง');
-                return;
-            }
-
-            const table = document.getElementById('ip-table');
-            const publicIP = await fetchPublicIP();
-            const domainIP = await fetchDomainIP(userDomain);
-
-            // Clear previous rows
-            table.innerHTML = ` 
-                <tr>
-                    <th>Domain Name</th>
-                    <th>Public IP (UserLocationIP)</th>
-                    <th>IP Address ของ Domain Name</th>
-                </tr>
-            `;
-
-            // Add the domain checked by the user
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${userDomain}</td>
-                <td>${publicIP}</td>
-                <td>${domainIP}</td>
-            `;
-            table.appendChild(row);
+        const userDomain = document.getElementById('user-domain').value.trim();
+        if (!userDomain) {
+            alert('กรุณากรอกโดเมน');
+            return;
         }
+
+        // Validate domain format (basic validation)
+        if (!validateDomain(userDomain)) {
+            alert('กรุณากรอกโดเมนที่ถูกต้อง');
+            return;
+        }
+
+        const table = document.getElementById('ip-table');
+        const publicIP = await fetchPublicIP();
+        const domainIP = await fetchDomainIP(userDomain);
+
+        // Add the domain checked by the user as a new row
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${userDomain}</td>
+            <td>${publicIP}</td>
+            <td>${domainIP}</td>
+        `;
+        table.appendChild(row);
+    }
+
     </script>
 </body>
 </html>
