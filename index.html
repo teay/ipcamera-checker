@@ -10,6 +10,7 @@
             margin: 20px;
             background-color: #f4f4f4;
             color: #333;
+            padding-bottom: 40px; /* เพิ่มพื้นที่ด้านล่าง */
         }
 
         h1 {
@@ -63,19 +64,29 @@
             background-color: #45a049;
         }
 
-        /* เพิ่มส่วนนี้เพื่อจัดกึ่งกลาง */
         .input-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
         }
+
+        /* Footer Style */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: #f4f4f4;
+            color: #555;
+            padding: 10px 0;
+        }
     </style>
 </head>
 <body>
     <h1>IPCAMERA CHECKER</h1>
 
-    <!-- กรอบของช่องกรอกและปุ่ม -->
     <div class="input-container">
         <input type="text" id="user-domain" placeholder="กรอกโดเมนที่นี่" />
         <button onclick="checkDomain()">ตรวจสอบโดเมน</button>
@@ -109,20 +120,17 @@
             ];
 
             try {
-                // รอผลลัพธ์จากหลายแหล่งพร้อมกัน (parallel)
                 const responses = await Promise.all(sources.map(source => fetch(source)
                     .then(response => response.json())
                     .catch(error => null)
                 )) ;
 
-                // หาผลลัพธ์ที่ไม่เป็น null และมีข้อมูล
                 for (let response of responses) {
                     if (response && response.Answer) {
                         return response.Answer[0].data;
                     }
                 }
 
-                // ถ้าไม่พบ IP ในแหล่งข้อมูลทั้ง 3 ให้แสดงข้อความ "ไม่พบ"
                 return '<span class="error">ไม่พบ</span>';
             } catch (error) {
                 console.error(`Error resolving domain ${domain}:`, error);
@@ -136,32 +144,34 @@
         }
 
         async function checkDomain() {
-        const userDomain = document.getElementById('user-domain').value.trim();
-        if (!userDomain) {
-            alert('กรุณากรอกโดเมน');
-            return;
+            const userDomain = document.getElementById('user-domain').value.trim();
+            if (!userDomain) {
+                alert('กรุณากรอกโดเมน');
+                return;
+            }
+
+            if (!validateDomain(userDomain)) {
+                alert('กรุณากรอกโดเมนที่ถูกต้อง');
+                return;
+            }
+
+            const table = document.getElementById('ip-table');
+            const publicIP = await fetchPublicIP();
+            const domainIP = await fetchDomainIP(userDomain);
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${userDomain}</td>
+                <td>${publicIP}</td>
+                <td>${domainIP}</td>
+            `;
+            table.appendChild(row);
         }
-
-        // Validate domain format (basic validation)
-        if (!validateDomain(userDomain)) {
-            alert('กรุณากรอกโดเมนที่ถูกต้อง');
-            return;
-        }
-
-        const table = document.getElementById('ip-table');
-        const publicIP = await fetchPublicIP();
-        const domainIP = await fetchDomainIP(userDomain);
-
-        // Add the domain checked by the user as a new row
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${userDomain}</td>
-            <td>${publicIP}</td>
-            <td>${domainIP}</td>
-        `;
-        table.appendChild(row);
-    }
-
     </script>
+
+    <!-- License Section -->
+    <footer>
+        <p>© 2025 teay. Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>.</p>
+    </footer>
 </body>
 </html>
