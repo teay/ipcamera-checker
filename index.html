@@ -152,6 +152,27 @@
             `;
             table.appendChild(row);
         }
+
+        // ฟังก์ชันโหลดข้อมูล IP ของโดเมน
+        async function loadIPData() {
+            const domains = ['google.com', 'google.co.th', 'canyouseeme.org'];
+            const table = document.getElementById('ip-table');
+            const publicIP = await fetchPublicIP();
+
+            domains.forEach(async (domain) => {
+                const domainIP = await fetchDomainIP(domain);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${domain}</td>
+                    <td>${publicIP}</td>
+                    <td>${domainIP}</td>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        // เรียกฟังก์ชันโหลดข้อมูลโดเมนเริ่มต้น
+        loadIPData();
     </script>
 </body>
 </html>
