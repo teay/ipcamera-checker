@@ -8,8 +8,10 @@
         body {
             font-family: 'Kanit', sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            /* background-color: #f4f4f4; */
+            background-color: #222222;
+            /* color: #333; */
+            color: #ffffff8a;
             padding-bottom: 40px;
         }
 
@@ -25,43 +27,49 @@
             margin: 20px auto;
             border-collapse: collapse;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: white;
+            background-color: rgb(94, 77, 77);
         }
 
         th, td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
+            background-color: #272727;
+            font-weight: 50;
         }
-
-        th {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-
+        
         .error {
             color: red;
         }
-
+        
         input[type="text"] {
             padding: 10px;
             font-size: 1rem;
             margin-right: 10px;
             width: 200px;
+            /* background-color: #272727; */
+            background-color: #3a3a3a;
+            color: #c0bfbf;
         }
 
+        input[type="text"]:focus {
+            background-color: #3b3b3b; /* เปลี่ยนสีพื้นหลังเมื่อคลิก (สีเหลืองอ่อน) */
+            border-color: #ffa500; /* เปลี่ยนสีเส้นขอบเมื่อคลิก */
+        }
+        
         button {
             padding: 10px;
             font-size: 1rem;
             cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
+            /* background-color: #4CAF50; */
+            background-color: #3a3a3a;
+            color: #ffffff8a;
             border: none;
             border-radius: 5px;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #535353;
         }
 
         .input-container {
@@ -77,8 +85,10 @@
             width: 100%;
             text-align: center;
             font-size: 0.9rem;
-            background-color: #f4f4f4;
-            color: #555;
+            /* background-color: #f4f4f4; */
+            background-color: #2c2c2c;
+            /* color: #555; */
+            color: #7a7a7a;
             padding: 10px 0;
         }
     </style>
@@ -168,8 +178,12 @@
         }
     </script>
 
-    <footer>
+    <!-- <footer>
         <p>© 2025 teay. Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>.</p>
+    </footer> -->
+    <footer>
+        <p>© 2025 teay. Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank"><span style="color: #ff634781;">Apache License 2.0</span></a>.</p>
     </footer>
+    
 </body>
 </html>
