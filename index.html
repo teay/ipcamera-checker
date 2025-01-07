@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checker IPCAMERA</title>
+    <title>IPCAMERA Checker</title>
     <style>
         body {
             font-family: 'Kanit', sans-serif;
             margin: 20px;
             background-color: #f4f4f4;
             color: #333;
-            padding-bottom: 40px; /* เพิ่มพื้นที่ด้านล่าง */
+            padding-bottom: 40px;
         }
 
         h1 {
@@ -71,7 +71,6 @@
             margin-bottom: 20px;
         }
 
-        /* Footer Style */
         footer {
             position: fixed;
             bottom: 0;
@@ -88,15 +87,15 @@
     <h1>IPCAMERA CHECKER</h1>
 
     <div class="input-container">
-        <input type="text" id="user-domain" placeholder="กรอกโดเมนที่นี่" />
-        <button onclick="checkDomain()">ตรวจสอบโดเมน</button>
+        <input type="text" id="user-domain" placeholder="Enter domain here" />
+        <button onclick="checkDomain()">Check Domain</button>
     </div>
 
     <table id="ip-table">
         <tr>
             <th>Domain Name</th>
-            <th>Public IP (UserLocationIP)</th>
-            <th>IP Address ของ Domain Name</th>
+            <th>Your Public IP</th>
+            <th>Domain IP Address</th>
         </tr>
     </table>
 
@@ -108,7 +107,7 @@
                 return data.ip;
             } catch (error) {
                 console.error('Error fetching public IP:', error);
-                return '<span class="error">ไม่พบ</span>';
+                return '<span class="error">Not Found</span>';
             }
         }
 
@@ -123,7 +122,7 @@
                 const responses = await Promise.all(sources.map(source => fetch(source)
                     .then(response => response.json())
                     .catch(error => null)
-                )) ;
+                ));
 
                 for (let response of responses) {
                     if (response && response.Answer) {
@@ -131,10 +130,10 @@
                     }
                 }
 
-                return '<span class="error">ไม่พบ</span>';
+                return '<span class="error">Not Found</span>';
             } catch (error) {
                 console.error(`Error resolving domain ${domain}:`, error);
-                return '<span class="error">ไม่พบ</span>';
+                return '<span class="error">Not Found</span>';
             }
         }
 
@@ -146,12 +145,12 @@
         async function checkDomain() {
             const userDomain = document.getElementById('user-domain').value.trim();
             if (!userDomain) {
-                alert('กรุณากรอกโดเมน');
+                alert('Please enter a domain');
                 return;
             }
 
             if (!validateDomain(userDomain)) {
-                alert('กรุณากรอกโดเมนที่ถูกต้อง');
+                alert('Please enter a valid domain');
                 return;
             }
 
@@ -169,7 +168,6 @@
         }
     </script>
 
-    <!-- License Section -->
     <footer>
         <p>© 2025 teay. Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>.</p>
     </footer>
