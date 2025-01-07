@@ -5,7 +5,7 @@ This is a simple web tool to check the domain information and its associated IP 
 ## Features
 
 - Input a domain name to check.
-- Fetch and display the user's public IP (UserLocationIP).
+- Fetch and display the user's public IP (Your Public IP).
 - Retrieve the IP address of the provided domain name using DNS queries.
 - Display results in a clean, easy-to-read table.
 
@@ -13,11 +13,11 @@ This is a simple web tool to check the domain information and its associated IP 
 
 1. Go to the website: [IPCAMERA CHECKER](https://teay.github.io/ipcamera-checker/) (Replace with your actual URL).
 2. Enter the domain name you want to check in the input field.
-3. Click the "ตรวจสอบโดเมน" (Check Domain) button.
+3. Click the "Check Domain" button.
 4. View the results in the table below, including:
-   - Domain Name
-   - Public IP (User Location IP)
-   - IP Address of the Domain Name
+   - **Domain Name**
+   - **Your Public IP**
+   - **Domain IP Address**
 
 ## How It Works
 
@@ -60,7 +60,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Contributions
 
 Feel free to open an issue or submit a pull request if you'd like to improve this project. Any contributions are welcome!
-
 
 ## License
 
