@@ -114,8 +114,8 @@
         async function fetchDomainIP(domain) {
             const sources = [
                 `https://dns.google/resolve?name=${domain}`,
-                // `https://1.1.1.1/dns-query?name=${domain}`,
-                // `https://resolver1.opendns.com/dns-query?name=${domain}`
+                `https://1.1.1.1/dns-query?name=${domain}`,
+                `https://resolver1.opendns.com/dns-query?name=${domain}`
             ];
 
             try {
